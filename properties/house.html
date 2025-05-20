@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Individual Houses | KovaiSpace Developers</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    body { background: #f5f5f5; margin: 0; font-family: 'Segoe UI', Arial, sans-serif; }
+    .house-block {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(44,62,80,0.07);
+      margin: 32px auto;
+      max-width: 900px;
+      padding: 28px 24px;
+      transition: box-shadow 0.2s;
+    }
+    .house-block:hover { box-shadow: 0 4px 24px rgba(44,62,80,0.13);}
+    .house-block h3 { color: #388e3c; font-size: 1.5rem; margin-bottom: 8px; }
+    .house-block .location { color: #666; font-size: 0.98rem; margin-bottom: 10px; }
+    .slider { display: flex; gap: 10px; margin-bottom: 16px; position: relative; height: 320px; }
+    .slider img { width: 100%; max-width: 900px; height: 320px; object-fit: cover; border-radius: 14px; box-shadow: 0 1px 12px rgba(44,62,80,0.09); opacity: 0; position: absolute; left: 0; top: 0; transition: opacity 0.7s; }
+    .slider img.active { opacity: 1; position: relative; }
+    .house-details { color: #444; font-size: 1.05rem; margin-bottom: 10px; }
+    .house-features { list-style: none; padding: 0; margin: 0 0 10px 0; }
+    .house-features li { margin-bottom: 7px; display: flex; align-items: center; gap: 8px; }
+    .house-features li i { color: #4caf50; min-width: 18px; }
+    .emi-section { background:#fff; padding:40px 10px 30px 10px; text-align:center; max-width: 400px; margin: 40px auto 40px auto; border-radius: 14px; box-shadow: 0 2px 12px rgba(44,62,80,0.07);}
+    .emi-section h2 { color:#4caf50; font-size:2rem; margin-bottom:18px; font-weight:700;}
+    .emi-section input, .emi-section button { width:100%; padding:10px; border-radius:6px; border:1px solid #ccc; margin-bottom:14px; font-size:1rem;}
+    .emi-section button { background: #388e3c; color: #fff; border: none; font-weight: 600; cursor: pointer; margin-bottom: 0;}
+    .emi-section #emiResult { margin-top:18px; font-size:1.15rem; color:#388e3c; font-weight:600;}
+    footer { background: #232323; color: #fff; padding: 40px 0 20px 0; margin-top: 40px;}
+    .footer-container { max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; padding: 0 24px;}
+    .footer-links, .footer-social, .footer-details { flex: 1 1 200px; min-width: 180px;}
+    .footer-links h3, .footer-social h3 { font-size: 1.1rem; margin-bottom: 12px; color: #4caf50;}
+    .footer-links ul { list-style: none; padding: 0; margin: 0;}
+    .footer-links ul li { margin-bottom: 8px;}
+    .footer-links ul li a { color: #fff; text-decoration: none; transition: color 0.2s;}
+    .footer-links ul li a:hover { color: #4caf50;}
+    .footer-social a { color: #fff; margin-right: 12px; font-size: 1.3rem; transition: color 0.2s;}
+    .footer-social a:hover { color: #4caf50;}
+    .footer-details img { max-width: 120px; margin-bottom: 10px;}
+    .footer-details p { margin: 4px 0; font-size: 0.98rem;}
+    .footer-quote { text-align: center; margin-top: 24px; color: #bbb; font-style: italic; font-size: 1.05rem;}
+    @media (max-width: 900px) {
+      .house-block { max-width: 98vw; padding: 18px 4vw; }
+      .slider { height: 180px; }
+      .slider img { width: 100vw; max-width: 100%; height: 180px; }
+    }
+  </style>
+</head>
+<body>
+  <a href="../index.html" class="back-link" style="text-decoration:none;color:#388e3c;display:inline-block;font-weight:600;font-size:1.05rem;margin:24px 0 0 24px;">
+    <i class="fas fa-arrow-left"></i>Back to Home
+  </a>
+  <div style="text-align:center;margin:32px 0 18px 0;">
+    <h1 style="color:#388e3c;">Individual Houses in Coimbatore</h1>
+    <p style="color:#555;">Explore our selection of ready-to-move and custom-built houses across prime locations.</p>
+  </div>
+
+  <!-- House 1 -->
+  <div class="house-block">
+    <h3>Classic Villa House</h3>
+    <div class="location"><i class="fas fa-map-marker-alt"></i> RS Puram, Coimbatore</div>
+    <div class="slider" id="slider1">
+      <img src="../images/house1_1.jpg" alt="Classic Villa House 1" class="active" />
+      <img src="../images/house1_2.jpg" alt="Classic Villa House 2" />
+      <img src="../images/house1_3.jpg" alt="Classic Villa House 3" />
+    </div>
+    <div class="house-details">
+      Spacious 3 BHK independent villa with private garden, car parking, and modern interiors.
+    </div>
+    <ul class="house-features">
+      <li><i class="fas fa-bed"></i> 3 Bedrooms</li>
+      <li><i class="fas fa-bath"></i> 3 Bathrooms</li>
+      <li><i class="fas fa-car"></i> Covered Car Parking</li>
+      <li><i class="fas fa-tree"></i> Private Garden</li>
+      <li><i class="fas fa-shield-alt"></i> Security System</li>
+      <li><i class="fas fa-wifi"></i> Wi-Fi Enabled</li>
+      <li><i class="fas fa-rupee-sign"></i> ₹1.2 Cr</li>
+    </ul>
+  </div>
+
+  <!-- House 2 -->
+  <div class="house-block">
+    <h3>Urban Compact House</h3>
+    <div class="location"><i class="fas fa-map-marker-alt"></i> Saibaba Colony, Coimbatore</div>
+    <div class="slider" id="slider2">
+      <img src="../images/house2_1.jpg" alt="Urban Compact House 1" class="active" />
+      <img src="../images/house2_2.jpg" alt="Urban Compact House 2" />
+      <img src="../images/house2_3.jpg" alt="Urban Compact House 3" />
+    </div>
+    <div class="house-details">
+      Modern 2 BHK house ideal for small families, with modular kitchen and rooftop terrace.
+    </div>
+    <ul class="house-features">
+      <li><i class="fas fa-bed"></i> 2 Bedrooms</li>
+      <li><i class="fas fa-bath"></i> 2 Bathrooms</li>
+      <li><i class="fas fa-solar-panel"></i> Solar Water Heater</li>
+      <li><i class="fas fa-warehouse"></i> Storage Room</li>
+      <li><i class="fas fa-rupee-sign"></i> ₹78 Lakh</li>
+    </ul>
+  </div>
+
+  <!-- House 3 -->
+  <div class="house-block">
+    <h3>Green Courtyard Home</h3>
+    <div class="location"><i class="fas fa-map-marker-alt"></i> Ganapathy, Coimbatore</div>
+    <div class="slider" id="slider3">
+      <img src="../images/house3_1.jpg" alt="Green Courtyard Home 1" class="active" />
+      <img src="../images/house3_2.jpg" alt="Green Courtyard Home 2" />
+      <img src="../images/house3_3.jpg" alt="Green Courtyard Home 3" />
+    </div>
+    <div class="house-details">
+      Eco-friendly 2 BHK home with central courtyard, rainwater harvesting, and airy living spaces.
+    </div>
+    <ul class="house-features">
+      <li><i class="fas fa-bed"></i> 2 Bedrooms</li>
+      <li><i class="fas fa-bath"></i> 2 Bathrooms</li>
+      <li><i class="fas fa-water"></i> Rainwater Harvesting</li>
+      <li><i class="fas fa-tree"></i> Courtyard Garden</li>
+      <li><i class="fas fa-rupee-sign"></i> ₹68 Lakh</li>
+    </ul>
+  </div>
+
+  <!-- EMI Calculator Section -->
+  <section class="emi-section" id="emi-calculator">
+    <h2>EMI Calculator</h2>
+    <form id="emiForm" style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
+      <div style="width:100%;display:flex;gap:10px;">
+        <input type="number" id="loanAmount" placeholder="Loan Amount (₹)" required style="flex:1;" />
+        <input type="number" id="interestRate" placeholder="Interest Rate (%)" required step="0.01" style="flex:1;" />
+      </div>
+      <div style="width:100%;display:flex;gap:10px;">
+        <input type="number" id="loanTenure" placeholder="Tenure (years)" required style="flex:1;" />
+        <button type="submit" style="flex:1;max-width:180px;">Calculate EMI</button>
+      </div>
+    </form>
+    <div id="emiResult"></div>
+  </section>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About Us</a></li>
+          <li><a href="../properties.html">Properties</a></li>
+          <li><a href="../blog.html">Blog</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <h3>Follow Us</h3>
+        <a href="https://facebook.com/kovaispace" aria-label="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com/kovaispace" aria-label="Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://instagram.com/kovaispace" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://linkedin.com/company/kovaispace" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <div class="footer-details">
+        <img src="../images/logo.png" alt="KovaiSpace Logo">
+        <p><strong>KovaiSpace Developers (India) Pvt. Ltd.</strong></p>
+        <p>123 Kovai, Thudiyalur, Tamil Nadu, India</p>
+        <p>+91 911111111</p>
+        <p><a href="mailto:kovaispace@space.com" style="color:#4caf50;">kovaispace@space.com</a></p>
+        <p>© 2025 KovaiSpace Developers. All rights reserved.</p>
+      </div>
+    </div>
+    <div class="footer-quote">
+      <p>"Home is not a place... it's a feeling. Let us help you find yours."</p>
+    </div>
+  </footer>
+
+  <script>
+    // Animation loop for each house slider
+    function animateSlider(sliderId) {
+      const imgs = document.querySelectorAll(`#${sliderId} img`);
+      let idx = 0;
+      setInterval(() => {
+        imgs[idx].classList.remove('active');
+        idx = (idx + 1) % imgs.length;
+        imgs[idx].classList.add('active');
+      }, 2500);
+    }
+    animateSlider('slider1');
+    animateSlider('slider2');
+    animateSlider('slider3');
+
+    // EMI Calculator Logic
+    document.getElementById('emiForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const P = parseFloat(document.getElementById('loanAmount').value);
+      const R = parseFloat(document.getElementById('interestRate').value) / 12 / 100;
+      const N = parseInt(document.getElementById('loanTenure').value) * 12;
+      if (P > 0 && R > 0 && N > 0) {
+        const emi = (P * R * Math.pow(1 + R, N)) / (Math.pow(1 + R, N) - 1);
+        document.getElementById('emiResult').textContent = `Monthly EMI: ₹${emi.toLocaleString(undefined, {maximumFractionDigits:0})}`;
+      } else {
+        document.getElementById('emiResult').textContent = 'Please enter valid values.';
+      }
+    });
+  </script>
+</body>
+</html>

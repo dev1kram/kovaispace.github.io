@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Our Properties | KovaiSpace Developers</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    .properties-hero {
+      min-height: 48vh;
+      background: url('../images/properties-hero.jpg') center center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+      position: relative;
+    }
+    .properties-hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(44,62,80,0.45);
+      z-index: 1;
+    }
+    .properties-hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 60px 20px 40px 20px;
+    }
+    .properties-hero h1 {
+      font-size: 2.3rem;
+      margin-bottom: 16px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .properties-hero p {
+      font-size: 1.2rem;
+      margin-bottom: 24px;
+    }
+    .properties-gallery {
+      background: #f5f5f5;
+      padding: 50px 10px 30px 10px;
+      text-align: center;
+    }
+    .properties-gallery h2 {
+      color: #4caf50;
+      font-size: 2rem;
+      margin-bottom: 28px;
+      font-weight: 700;
+    }
+    .gallery-properties {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .property-block {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(44,62,80,0.07);
+      padding: 18px 12px 28px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 340px;
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 1s ease;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s, transform 0.7s;
+    }
+    .property-block h3 {
+      margin-bottom: 12px;
+      color: #388e3c;
+      font-size: 1.18rem;
+      font-weight: 700;
+    }
+    .property-slider {
+      width: 100%;
+      max-width: 320px;
+      height: 200px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin-bottom: 10px;
+    }
+    .property-slider img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      transition: opacity 1s;
+      z-index: 1;
+    }
+    .property-slider img.active {
+      opacity: 1;
+      z-index: 2;
+    }
+    .property-block .location {
+      color: #666;
+      font-size: 0.98rem;
+      margin-bottom: 6px;
+    }
+    .property-details {
+      color: #444;
+      font-size: 1.05rem;
+      margin-bottom: 10px;
+      margin-top: 10px;
+      text-align: center;
+    }
+    .property-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 10px 0;
+    }
+    .property-features li {
+      margin-bottom: 7px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #444;
+      font-size: 1.03rem;
+    }
+    .property-features li i {
+      color: #4caf50;
+      min-width: 18px;
+    }
+    @media (max-width: 900px) {
+      .gallery-properties {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+      .property-slider, .property-slider img {
+        max-width: 100vw;
+        height: 180px;
+      }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <div class="logo">
+        <a href="../index.html">
+          <img src="../images/logo.png" alt="KovaiSpace Logo" />
+        </a>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About Us</a></li>
+          <li class="dropdown">
+            <a href="#">Properties</a>
+            <ul class="dropdown-menu">
+              <li><a href="house.html">Houses</a></li>
+              <li><a href="gated-community.html">Gated Communities</a></li>
+              <li><a href="apartment.html">Apartments</a></li>
+            </ul>
+          </li>
+          <li><a href="../blog.html">Blog</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+          <li><a href="../book.html" class="btn-primary">Book</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="properties-hero">
+    <div class="properties-hero-content">
+      <h1>Our Properties</h1>
+      <p>Explore our exclusive collection of houses, gated communities, and apartments in Coimbatore.</p>
+      <a href="../contact.html" class="btn-primary">Contact Us</a>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="properties-gallery">
+    <h2>Featured Properties</h2>
+    <div class="gallery-properties">
+      <!-- Houses -->
+      <div class="property-block">
+        <a href="house.html" style="text-decoration:none;color:inherit;display:block;">
+          <h3>Houses</h3>
+          <div class="location"><i class="fas fa-map-marker-alt"></i> Multiple Locations</div>
+          <div class="property-slider" id="house-slider">
+            <img src="../images/house1.jpg" alt="House 1" class="active" />
+            <img src="../images/house2.jpg" alt="House 2" />
+            <img src="../images/house3.jpg" alt="House 3" />
+          </div>
+          <ul class="property-features">
+            <li><i class="fas fa-home"></i> Independent Villas</li>
+            <li><i class="fas fa-tree"></i> Private Gardens</li>
+            <li><i class="fas fa-car"></i> Covered Parking</li>
+          </ul>
+        </a>
+      </div>
+      <!-- Gated Communities -->
+      <div class="property-block">
+        <a href="gated-community.html" style="text-decoration:none;color:inherit;display:block;">
+          <h3>Gated Communities</h3>
+          <div class="location"><i class="fas fa-map-marker-alt"></i> Saravanampatti, Coimbatore</div>
+          <div class="property-slider" id="gated-slider">
+            <img src="../images/gated1.jpg" alt="Gated Community 1" class="active" />
+            <img src="../images/gated2.jpg" alt="Gated Community 2" />
+            <img src="../images/gated3.jpg" alt="Gated Community 3" />
+          </div>
+          <ul class="property-features">
+            <li><i class="fas fa-shield-alt"></i> 24x7 Security</li>
+            <li><i class="fas fa-swimming-pool"></i> Clubhouse & Pool</li>
+            <li><i class="fas fa-dumbbell"></i> Fitness Center</li>
+          </ul>
+        </a>
+      </div>
+      <!-- Apartments -->
+      <div class="property-block">
+        <a href="apartment.html" style="text-decoration:none;color:inherit;display:block;">
+          <h3>Apartments</h3>
+          <div class="location"><i class="fas fa-map-marker-alt"></i> Peelamedu, Gandhipuram, Vadavalli</div>
+          <div class="property-slider" id="apartment-slider">
+            <img src="../images/apartment1_1.jpg" alt="Apartment 1" class="active" />
+            <img src="../images/apartment2_1.jpg" alt="Apartment 2" />
+            <img src="../images/apartment3_1.jpg" alt="Apartment 3" />
+          </div>
+          <ul class="property-features">
+            <li><i class="fas fa-building"></i> Modern Towers</li>
+            <li><i class="fas fa-elevator"></i> Elevators</li>
+            <li><i class="fas fa-parking"></i> Reserved Parking</li>
+          </ul>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-container">
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About Us</a></li>
+          <li><a href="../properties.html">Properties</a></li>
+          <li><a href="../blog.html">Blog</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <h3>Follow Us</h3>
+        <a href="https://facebook.com/kovaispace" aria-label="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com/kovaispace" aria-label="Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://instagram.com/kovaispace" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://linkedin.com/company/kovaispace" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <div class="footer-details">
+        <img src="../images/logo.png" alt="KovaiSpace Logo" style="max-width:120px;margin-bottom:10px;">
+        <p><strong>KovaiSpace Developers (India) Pvt. Ltd.</strong></p>
+        <p>123 Kovai, Thudiyalur, Tamil Nadu, India</p>
+        <p>+91 911111111</p>
+        <p><a href="mailto:kovaispace@space.com">kovaispace@space.com</a></p>
+        <p>© 2025 KovaiSpace Developers. All rights reserved.</p>
+      </div>
+    </div>
+    <div class="footer-quote">
+      <p>"Home is not a place... it's a feeling. Let us help you find yours."</p>
+    </div>
+  </footer>
+
+  <script>
+    // Helper to run a slider for each property
+    function setupPropertySlider(sliderId) {
+      const slider = document.getElementById(sliderId);
+      if (!slider) return;
+      const images = slider.querySelectorAll('img');
+      let idx = 0;
+      images.forEach((img, i) => img.classList.toggle('active', i === 0));
+      setInterval(() => {
+        images[idx].classList.remove('active');
+        idx = (idx + 1) % images.length;
+        images[idx].classList.add('active');
+      }, 3000);
+    }
+    // Setup all sliders
+    ['house-slider','gated-slider','apartment-slider'].forEach(setupPropertySlider);
+
+    // Fade-in on scroll for property blocks
+    function fadeInPropertyBlocks() {
+      document.querySelectorAll('.property-block').forEach(block => {
+        const rect = block.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 60) {
+          block.style.opacity = 1;
+          block.style.transform = 'translateY(0)';
+        }
+      });
+    }
+    window.addEventListener('scroll', fadeInPropertyBlocks);
+    window.addEventListener('DOMContentLoaded', fadeInPropertyBlocks);
+  </script>
+</body>
+</html>

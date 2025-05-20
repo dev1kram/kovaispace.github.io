@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gated Communities | KovaiSpace Developers</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    .gated-hero {
+      min-height: 60vh;
+      background: url('../images/gated-hero.jpg') center center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+      position: relative;
+    }
+    .gated-hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(44,62,80,0.45);
+      z-index: 1;
+    }
+    .gated-hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 60px 20px 40px 20px;
+    }
+    .gated-hero h1 {
+      font-size: 2.3rem;
+      margin-bottom: 16px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .gated-hero p {
+      font-size: 1.2rem;
+      margin-bottom: 24px;
+    }
+    .gated-hero .btn-primary {
+      background: #4caf50;
+      color: #fff;
+      padding: 12px 32px;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .gated-hero .btn-primary:hover {
+      background: #388e3c;
+    }
+    .community-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 32px;
+      background: #f5f5f5;
+      padding: 40px 0 20px 0;
+    }
+    .highlight {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(44,62,80,0.07);
+      padding: 24px 18px;
+      min-width: 160px;
+      max-width: 200px;
+      margin-bottom: 18px;
+    }
+    .highlight i {
+      font-size: 2.2em;
+      color: #4caf50;
+      margin-bottom: 12px;
+    }
+    .highlight span {
+      font-size: 1.08rem;
+      color: #232323;
+      font-weight: 500;
+      text-align: center;
+    }
+    .property-types-section {
+      background: #fff;
+      padding: 50px 0 30px 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: center;
+    }
+    .property-type-card {
+      background: #f8f8f8;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(44,62,80,0.07);
+      max-width: 370px;
+      flex: 1 1 320px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 28px 20px 22px 20px;
+      margin-bottom: 18px;
+      text-align: center;
+    }
+    .property-type-card img {
+      width: 100%;
+      max-width: 320px;
+      border-radius: 10px;
+      margin-bottom: 18px;
+      object-fit: cover;
+      aspect-ratio: 4/3;
+    }
+    .property-type-card h3 {
+      color: #4caf50;
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    .property-type-card p {
+      color: #444;
+      font-size: 1.05rem;
+      margin-bottom: 16px;
+    }
+    .property-type-card .btn-secondary {
+      background: #388e3c;
+      color: #fff;
+      padding: 8px 22px;
+      border-radius: 20px;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .property-type-card .btn-secondary:hover {
+      background: #4caf50;
+    }
+    .amenities-infra-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: center;
+      background: #f5f5f5;
+      padding: 50px 0 30px 0;
+    }
+    .amenities-col, .infra-col {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(44,62,80,0.07);
+      max-width: 400px;
+      flex: 1 1 320px;
+      padding: 32px 24px;
+      margin-bottom: 18px;
+    }
+    .amenities-col h4, .infra-col h4 {
+      color: #388e3c;
+      font-size: 1.13rem;
+      margin-bottom: 14px;
+      font-weight: 700;
+    }
+    .amenities-col ul, .infra-col ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .amenities-col li, .infra-col li {
+      font-size: 1.05rem;
+      color: #444;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .amenities-col li i, .infra-col li i {
+      color: #4caf50;
+      min-width: 20px;
+      opacity: 0.85;
+    }
+    .why-choose-section {
+      background: #fff;
+      padding: 50px 10px 30px 10px;
+      text-align: center;
+    }
+    .why-choose-section h2 {
+      color: #4caf50;
+      font-size: 2rem;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+    .why-choose-section p {
+      color: #444;
+      font-size: 1.13rem;
+      margin-bottom: 18px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .why-choose-stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+    .why-choose-stats .stat {
+      background: #f5f5f5;
+      border-radius: 10px;
+      padding: 18px 32px;
+      font-size: 1.2rem;
+      color: #232323;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .gallery-section {
+      background: #f5f5f5;
+      padding: 50px 10px 30px 10px;
+      text-align: center;
+    }
+    .gallery-section h2 {
+      color: #4caf50;
+      font-size: 2rem;
+      margin-bottom: 28px;
+      font-weight: 700;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .gallery-grid img {
+      width: 100%;
+      border-radius: 10px;
+      object-fit: cover;
+      aspect-ratio: 4/3;
+      box-shadow: 0 2px 12px rgba(44,62,80,0.07);
+    }
+    .cta-section {
+      background: #388e3c;
+      color: #fff;
+      text-align: center;
+      padding: 50px 10px 50px 10px;
+    }
+    .cta-section h2 {
+      font-size: 2rem;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+    .cta-section .btn-primary {
+      background: #fff;
+      color: #388e3c;
+      padding: 14px 36px;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: 700;
+      transition: background 0.2s, color 0.2s;
+    }
+    .cta-section .btn-primary:hover {
+      background: #4caf50;
+      color: #fff;
+    }
+    @media (max-width: 900px) {
+      .community-highlights, .property-types-section, .amenities-infra-section, .why-choose-stats, .gallery-grid {
+        flex-direction: column;
+        gap: 18px;
+        align-items: stretch;
+      }
+      .property-type-card, .amenities-col, .infra-col {
+        max-width: 100%;
+        min-width: 0;
+      }
+    }
+    .gated-gallery {
+      background: #f5f5f5;
+      padding: 50px 10px 30px 10px;
+      text-align: center;
+    }
+    .gated-gallery h2 {
+      color: #4caf50;
+      font-size: 2rem;
+      margin-bottom: 28px;
+      font-weight: 700;
+    }
+    .gallery-communities {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .community-block {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(44,62,80,0.07);
+      padding: 18px 12px 28px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 340px;
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 1s ease;
+    }
+    .community-block h3 {
+      margin-bottom: 12px;
+      color: #388e3c;
+      font-size: 1.18rem;
+      font-weight: 700;
+    }
+    .slider {
+      width: 100%;
+      max-width: 320px;
+      height: 200px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    .slider img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      transition: opacity 1s;
+      z-index: 1;
+    }
+    .slider img.active {
+      opacity: 1;
+      z-index: 2;
+    }
+    @media (max-width: 900px) {
+      .gallery-communities {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+      .slider, .slider img {
+        max-width: 100vw;
+        height: 180px;
+      }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <div class="logo">
+        <a href="../index.html">
+          <img src="../images/logo.png" alt="KovaiSpace Logo" />
+        </a>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About Us</a></li>
+          <li class="dropdown">
+            <a href="#">Properties</a>
+            <ul class="dropdown-menu">
+              <li><a href="house.html">Houses</a></li>
+              <li><a href="gated-community.html" class="active">Gated Communities</a></li>
+              <li><a href="apartment.html">Apartments</a></li>
+            </ul>
+          </li>
+          <li><a href="../blog.html">Blog</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+          <li><a href="../#enquiry" class="btn-primary">Book</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Only Gallery Section -->
+  <section class="gated-gallery">
+    <h2>Our Gated Community Gallery</h2>
+    <div class="gallery-communities">
+      <!-- Community 1 -->
+      <div class="community-block">
+        <a href="gated-community-1.html" style="text-decoration:none;color:inherit;">
+          <h3>Lakeview Harmony Villas</h3>
+          <div style="color:#666;font-size:0.98rem;margin-bottom:6px;">Location: Vadavalli, Coimbatore</div>
+          <div class="slider" id="gc1-slider">
+            <img src="../images/gc1_1.jpg" alt="Lakeview Harmony Villas - 1" />
+            <img src="../images/gc1_2.jpg" alt="Lakeview Harmony Villas - 2" />
+            <img src="../images/gc1_3.jpg" alt="Lakeview Harmony Villas - 3" />
+            <img src="../images/gc1_4.jpg" alt="Lakeview Harmony Villas - 4" />
+          </div>
+        </a>
+      </div>
+      <!-- Community 2 -->
+      <div class="community-block">
+        <a href="gated-community-2.html" style="text-decoration:none;color:inherit;">
+          <h3>Serene Woods Enclave</h3>
+          <div style="color:#666;font-size:0.98rem;margin-bottom:6px;">Location: Kalapatti, Coimbatore</div>
+          <div class="slider" id="gc2-slider">
+            <img src="../images/gc2_1.jpg" alt="Serene Woods Enclave - 1" />
+            <img src="../images/gc2_2.jpg" alt="Serene Woods Enclave - 2" />
+            <img src="../images/gc2_3.jpg" alt="Serene Woods Enclave - 3" />
+            <img src="../images/gc2_4.jpg" alt="Serene Woods Enclave - 4" />
+          </div>
+        </a>
+      </div>
+      <!-- Community 3 -->
+      <div class="community-block">
+        <a href="gated-community-3.html" style="text-decoration:none;color:inherit;">
+          <h3>Green Meadows Residences</h3>
+          <div style="color:#666;font-size:0.98rem;margin-bottom:6px;">Location: Saravanampatti, Coimbatore</div>
+          <div class="slider" id="gc3-slider">
+            <img src="../images/gc3_1.jpg" alt="Green Meadows Residences - 1" />
+            <img src="../images/gc3_2.jpg" alt="Green Meadows Residences - 2" />
+            <img src="../images/gc3_3.jpg" alt="Green Meadows Residences - 3" />
+            <img src="../images/gc3_4.jpg" alt="Green Meadows Residences - 4" />
+          </div>
+        </a>
+      </div>
+      <!-- Community 4 -->
+      <div class="community-block">
+        <a href="gated-community-4.html" style="text-decoration:none;color:inherit;">
+          <h3>Sunrise Budget Villas</h3>
+          <div style="color:#666;font-size:0.98rem;margin-bottom:6px;">Location: Koundampalayam, Coimbatore</div>
+          <div class="slider" id="gc4-slider">
+            <img src="../images/gc4_1.jpg" alt="Sunrise Budget Villas - 1" />
+            <img src="../images/gc4_2.jpg" alt="Sunrise Budget Villas - 2" />
+            <img src="../images/gc4_3.jpg" alt="Sunrise Budget Villas - 3" />
+            <img src="../images/gc4_4.jpg" alt="Sunrise Budget Villas - 4" />
+          </div>
+        </a>
+      </div>
+      <!-- Community 5 -->
+      <div class="community-block">
+        <a href="gated-community-5.html" style="text-decoration:none;color:inherit;">
+          <h3>Harmony Affordable Villas</h3>
+          <div style="color:#666;font-size:0.98rem;margin-bottom:6px;">Location: Singanallur, Coimbatore</div>
+          <div class="slider" id="gc5-slider">
+            <img src="../images/gc5_1.jpg" alt="Harmony Affordable Villas - 1" />
+            <img src="../images/gc5_2.jpg" alt="Harmony Affordable Villas - 2" />
+            <img src="../images/gc5_3.jpg" alt="Harmony Affordable Villas - 3" />
+            <img src="../images/gc5_4.jpg" alt="Harmony Affordable Villas - 4" />
+          </div>
+        </a>
+      </div>
+      <!-- Community 6 -->
+      <div class="community-block">
+        <a href="gated-community-6.html" style="text-decoration:none;color:inherit;">
+          <h3>Blissful Meadows Villas</h3>
+          <div style="color:#666;font-size:0.98rem;margin-bottom:6px;">Location: Peelamedu, Coimbatore</div>
+          <div class="slider" id="gc6-slider">
+            <img src="../images/gc6_1.jpg" alt="Blissful Meadows Villas - 1" />
+            <img src="../images/gc6_2.jpg" alt="Blissful Meadows Villas - 2" />
+            <img src="../images/gc6_3.jpg" alt="Blissful Meadows Villas - 3" />
+            <img src="../images/gc6_4.jpg" alt="Blissful Meadows Villas - 4" />
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-container">
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About Us</a></li>
+          <li><a href="../properties.html">Properties</a></li>
+          <li><a href="../blog.html">Blog</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <h3>Follow Us</h3>
+        <a href="https://facebook.com/kovaispace" aria-label="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com/kovaispace" aria-label="Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://instagram.com/kovaispace" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://linkedin.com/company/kovaispace" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <div class="footer-details">
+        <img src="../images/logo.png" alt="KovaiSpace Logo" style="max-width:120px;margin-bottom:10px;">
+        <p><strong>KovaiSpace Developers (India) Pvt. Ltd.</strong></p>
+        <p>123 Kovai, Thudiyalur, Tamil Nadu, India</p>
+        <p>+91 911111111</p>
+        <p><a href="mailto:kovaispace@space.com">kovaispace@space.com</a></p>
+        <p>© 2025 KovaiSpace Developers. All rights reserved.</p>
+      </div>
+    </div>
+    <div class="footer-quote">
+      <p>"Home is not a place... it's a feeling. Let us help you find yours."</p>
+    </div>
+  </footer>
+
+  <script>
+    // Helper to run a slider for each community
+    function setupGallerySlider(sliderId) {
+      const slider = document.getElementById(sliderId);
+      if (!slider) return;
+      const images = slider.querySelectorAll('img');
+      let idx = 0;
+      images.forEach((img, i) => img.classList.toggle('active', i === 0));
+      setInterval(() => {
+        images[idx].classList.remove('active');
+        idx = (idx + 1) % images.length;
+        images[idx].classList.add('active');
+      }, 3000);
+    }
+    // Setup all six sliders
+    ['gc1-slider','gc2-slider','gc3-slider','gc4-slider','gc5-slider','gc6-slider'].forEach(setupGallerySlider);
+
+    // Optional: fade-in on scroll for gallery blocks
+    function fadeInGalleryBlocks() {
+      document.querySelectorAll('.community-block').forEach(block => {
+        const rect = block.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 60) {
+          block.style.opacity = 1;
+          block.style.transform = 'translateY(0)';
+        }
+      });
+    }
+    window.addEventListener('scroll', fadeInGalleryBlocks);
+    window.addEventListener('DOMContentLoaded', fadeInGalleryBlocks);
+  </script>
+</body>
+</html>

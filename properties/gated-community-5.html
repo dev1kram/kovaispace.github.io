@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Harmony Affordable Villas | KovaiSpace Developers</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    body { background: #f5f5f5; margin: 0; font-family: 'Segoe UI', Arial, sans-serif; }
+    .back-link { display: inline-block; margin: 24px 0 0 24px; color: #388e3c; text-decoration: none; font-weight: 600; font-size: 1.05rem; }
+    .back-link i { margin-right: 6px; }
+    .community-header { text-align: center; margin: 24px 0 24px 0; }
+    .community-header h1 { color: #388e3c; font-size: 2rem; font-weight: 700; margin-bottom: 10px; }
+    .image-slider { max-width: 600px; margin: 0 auto 32px auto; position: relative; overflow: hidden; border-radius: 16px; box-shadow: 0 2px 16px rgba(44,62,80,0.09); background: #fff; height: 340px; }
+    .image-slider .slide { opacity: 0; position: absolute; left: 0; top: 0; width: 100%; height: 340px; transition: opacity 1s cubic-bezier(.4,0,.2,1), transform 1s cubic-bezier(.4,0,.2,1); transform: scale(0.97) translateY(20px); z-index: 1; pointer-events: none; }
+    .image-slider .slide.active { opacity: 1; position: relative; z-index: 2; transform: scale(1) translateY(0); pointer-events: auto; animation: slideIn 1s cubic-bezier(.4,0,.2,1);}
+    @keyframes slideIn { from { opacity: 0; transform: scale(0.97) translateY(40px);} to { opacity: 1; transform: scale(1) translateY(0);} }
+    .image-slider .slide img { width: 100%; height: 340px; object-fit: cover; border-radius: 16px; }
+    .slider-caption { background: rgba(44,62,80,0.7); color: #fff; padding: 8px 18px; border-radius: 0 0 16px 16px; position: absolute; left: 0; bottom: 0; width: 100%; font-size: 1.08rem; text-align: left; }
+    .villa-details-section { max-width: 600px; margin: 0 auto 32px auto; background: #fff; border-radius: 14px; box-shadow: 0 2px 12px rgba(44,62,80,0.07); padding: 28px 24px; }
+    .villa-details-section h2 { color: #4caf50; font-size: 1.3rem; margin-bottom: 8px; font-weight: 700; }
+    .villa-details-section .price-range { font-weight: 600; color: #388e3c; margin-bottom: 10px; font-size: 1.08rem; }
+    .villa-details-section h3 { color: #232323; font-size: 1.1rem; margin: 18px 0 8px 0; font-weight: 600; }
+    .villa-details-section ul { list-style: none; padding: 0; margin: 0 0 10px 0; }
+    .villa-details-section li { margin-bottom: 8px; display: flex; align-items: center; gap: 8px; color: #444; font-size: 1.03rem; }
+    .villa-details-section li i { color: #4caf50; min-width: 18px; }
+    @keyframes bounce { from { transform: translateY(0);} to { transform: translateY(-12px);} }
+    .building-plan-img { display: block; margin: 24px auto 18px auto; max-width: 95%; border-radius: 12px; box-shadow: 0 2px 12px rgba(44,62,80,0.10); border: 2px solid #e0e0e0; }
+    .emi-section { background:#fff; padding:40px 10px 30px 10px; text-align:center; max-width: 400px; margin: 0 auto 40px auto; border-radius: 14px; box-shadow: 0 2px 12px rgba(44,62,80,0.07);}
+    .emi-section h2 { color:#4caf50; font-size:2rem; margin-bottom:18px; font-weight:700;}
+    .emi-section input, .emi-section button { width:100%; padding:10px; border-radius:6px; border:1px solid #ccc; margin-bottom:14px; font-size:1rem;}
+    .emi-section button { background: #388e3c; color: #fff; border: none; font-weight: 600; cursor: pointer; margin-bottom: 0;}
+    .emi-section #emiResult { margin-top:18px; font-size:1.15rem; color:#388e3c; font-weight:600;}
+    footer { background: #232323; color: #fff; padding: 40px 0 20px 0; margin-top: 40px;}
+    .footer-container { max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; padding: 0 24px;}
+    .footer-links, .footer-social, .footer-details { flex: 1 1 200px; min-width: 180px;}
+    .footer-links h3, .footer-social h3 { font-size: 1.1rem; margin-bottom: 12px; color: #4caf50;}
+    .footer-links ul { list-style: none; padding: 0; margin: 0;}
+    .footer-links ul li { margin-bottom: 8px;}
+    .footer-links ul li a { color: #fff; text-decoration: none; transition: color 0.2s;}
+    .footer-links ul li a:hover { color: #4caf50;}
+    .footer-social a { color: #fff; margin-right: 12px; font-size: 1.3rem; transition: color 0.2s;}
+    .footer-social a:hover { color: #4caf50;}
+    .footer-details img { max-width: 120px; margin-bottom: 10px;}
+    .footer-details p { margin: 4px 0; font-size: 0.98rem;}
+    .footer-quote { text-align: center; margin-top: 24px; color: #bbb; font-style: italic; font-size: 1.05rem;}
+    @media (max-width: 900px) { .footer-container { flex-direction: column; gap: 18px; padding: 0 8vw; } }
+    @media (max-width: 700px) { .image-slider { max-width: 98vw; height: 180px;} .image-slider .slide, .image-slider .slide img { height: 180px; } .villa-details-section { padding: 18px 4vw; } }
+  </style>
+</head>
+<body>
+  <a href="gated-community.html" class="back-link"><i class="fas fa-arrow-left"></i>Back to Gallery</a>
+  <div class="community-header">
+    <h1>Harmony Affordable Villas</h1>
+    <p style="color:#444;">Smart living with practical amenities for every family</p>
+  </div>
+  <section class="image-slider" id="community-slider">
+    <div class="slide active">
+      <img src="../images/gc5_1.jpg" alt="Harmony Affordable - Main Entrance" />
+      <div class="slider-caption">Main Entrance</div>
+    </div>
+    <div class="slide">
+      <img src="../images/gc5_2.jpg" alt="Harmony Affordable - Villa Exterior" />
+      <div class="slider-caption">Villa Exterior</div>
+    </div>
+    <div class="slide">
+      <img src="../images/gc5_3.jpg" alt="Harmony Affordable - Community Hall" />
+      <div class="slider-caption">Community Hall</div>
+    </div>
+    <div class="slide">
+      <img src="../images/gc5_4.jpg" alt="Harmony Affordable - Play Area" />
+      <div class="slider-caption">Children's Play Area</div>
+    </div>
+  </section>
+
+  <section class="villa-details-section">
+    <h2><i class="fas fa-home"></i> Family Villas</h2>
+    <div class="price-range"><i class="fas fa-rupee-sign"></i> Price Range: ₹58 Lakh – ₹95 Lakh</div>
+    <div style="display:flex;align-items:center;justify-content:center;gap:32px;margin:18px 0;">
+      <!-- Animated Bedrooms -->
+      <div style="text-align:center;">
+        <div style="font-size:2.2rem;animation:bounce 1.2s infinite alternate;">
+          <i class="fas fa-bed"></i> <span style="font-size:1.4rem;">2</span>
+        </div>
+        <div style="font-size:1rem;color:#555;">Bedrooms</div>
+      </div>
+      <!-- Animated Bathrooms -->
+      <div style="text-align:center;">
+        <div style="font-size:2.2rem;animation:bounce 1.2s 0.3s infinite alternate;">
+          <i class="fas fa-bath"></i> <span style="font-size:1.4rem;">2</span>
+        </div>
+        <div style="font-size:1rem;color:#555;">Bathrooms</div>
+      </div>
+      <!-- Animated Families -->
+      <div style="text-align:center;">
+        <div style="font-size:2.2rem;animation:bounce 1.2s 0.6s infinite alternate;">
+          <i class="fas fa-users"></i> <span style="font-size:1.4rem;">100+</span>
+        </div>
+        <div style="font-size:1rem;color:#555;">Happy Families</div>
+      </div>
+    </div>
+    <img src="../images/gc5_plan.jpg" alt="Building Plan - Harmony Affordable Villas" class="building-plan-img" />
+    <p style="margin-bottom:18px;color:#555;">
+      Harmony Affordable Villas are designed for practical living, offering compact 2 BHK layouts, community gardens, and all the essentials for a comfortable family life.
+    </p>
+    <h3>Amenities</h3>
+    <ul>
+      <li><i class="fas fa-child"></i> Children's Play Area</li>
+      <li><i class="fas fa-tree"></i> Community Garden & Sitting Benches</li>
+      <li><i class="fas fa-users"></i> Multipurpose Community Hall</li>
+      <li><i class="fas fa-bicycle"></i> Bicycle Track</li>
+      <li><i class="fas fa-shopping-basket"></i> Mini-Mart</li>
+      <li><i class="fas fa-shield-alt"></i> 24x7 Security</li>
+      <li><i class="fas fa-car"></i> Open Car Parking</li>
+      <li><i class="fas fa-water"></i> Drinking Water Facility</li>
+      <li><i class="fas fa-bolt"></i> Power Backup for Common Areas</li>
+      <li><i class="fas fa-recycle"></i> Waste Collection Point</li>
+      <li><i class="fas fa-bus"></i> Shuttle Service</li>
+      <li><i class="fas fa-wifi"></i> Wi-Fi in Common Areas</li>
+      <li><i class="fas fa-volleyball-ball"></i> Outdoor Volleyball Court</li>
+      <li><i class="fas fa-dog"></i> Small Pet Zone</li>
+    </ul>
+    <h3>Infrastructure</h3>
+    <ul>
+      <li><i class="fas fa-road"></i> Concrete Internal Roads</li>
+      <li><i class="fas fa-lightbulb"></i> LED Street Lighting</li>
+      <li><i class="fas fa-water"></i> Rainwater Harvesting</li>
+      <li><i class="fas fa-faucet"></i> Treated Water Supply</li>
+      <li><i class="fas fa-fire"></i> Fire Safety Points</li>
+      <li><i class="fas fa-tree"></i> Avenue Plantation</li>
+      <li><i class="fas fa-recycle"></i> Basic Waste Management</li>
+      <li><i class="fas fa-cogs"></i> Maintenance Staff Office</li>
+    </ul>
+    <h3>Highlights</h3>
+    <ul>
+      <li><i class="fas fa-users"></i> Vibrant, budget-friendly community</li>
+      <li><i class="fas fa-map-marker-alt"></i> Close to schools, shops, and bus stops</li>
+      <li><i class="fas fa-calendar-check"></i> Community Events & Festivals</li>
+      <li><i class="fas fa-child"></i> Safe play zones for kids</li>
+      <li><i class="fas fa-heart"></i> Ideal for young and growing families</li>
+    </ul>
+  </section>
+
+  <section class="emi-section" id="emi-calculator">
+    <h2>EMI Calculator</h2>
+    <form id="emiForm" style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
+      <div style="width:100%;display:flex;gap:10px;">
+        <input type="number" id="loanAmount" placeholder="Loan Amount (₹)" required style="flex:1;" />
+        <input type="number" id="interestRate" placeholder="Interest Rate (%)" required step="0.01" style="flex:1;" />
+      </div>
+      <div style="width:100%;display:flex;gap:10px;">
+        <input type="number" id="loanTenure" placeholder="Tenure (years)" required style="flex:1;" />
+        <button type="submit" style="flex:1;max-width:180px;">Calculate EMI</button>
+      </div>
+    </form>
+    <div id="emiResult"></div>
+  </section>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About Us</a></li>
+          <li><a href="../properties.html">Properties</a></li>
+          <li><a href="../blog.html">Blog</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <h3>Follow Us</h3>
+        <a href="https://facebook.com/kovaispace" aria-label="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com/kovaispace" aria-label="Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://instagram.com/kovaispace" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://linkedin.com/company/kovaispace" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <div class="footer-details">
+        <img src="../images/logo.png" alt="KovaiSpace Logo">
+        <p><strong>KovaiSpace Developers (India) Pvt. Ltd.</strong></p>
+        <p>123 Kovai, Thudiyalur, Tamil Nadu, India</p>
+        <p>+91 911111111</p>
+        <p><a href="mailto:kovaispace@space.com" style="color:#4caf50;">kovaispace@space.com</a></p>
+        <p>© 2025 KovaiSpace Developers. All rights reserved.</p>
+      </div>
+    </div>
+    <div class="footer-quote">
+      <p>"Home is not a place... it's a feeling. Let us help you find yours."</p>
+    </div>
+  </footer>
+
+  <script>
+    // Slider logic
+    const slides = document.querySelectorAll('#community-slider .slide');
+    let idx = 0;
+    let sliderInterval = setInterval(nextSlide, 3500);
+
+    function nextSlide() {
+      slides[idx].classList.remove('active');
+      idx = (idx + 1) % slides.length;
+      slides[idx].classList.add('active');
+    }
+
+    // Swipe support
+    let startX = null;
+    const slider = document.getElementById('community-slider');
+    slider.addEventListener('touchstart', e => {
+      startX = e.touches[0].clientX;
+    });
+    slider.addEventListener('touchend', e => {
+      if (startX === null) return;
+      let endX = e.changedTouches[0].clientX;
+      if (endX - startX > 50) {
+        slides[idx].classList.remove('active');
+        idx = (idx - 1 + slides.length) % slides.length;
+        slides[idx].classList.add('active');
+      } else if (startX - endX > 50) {
+        nextSlide();
+      }
+      startX = null;
+      clearInterval(sliderInterval);
+      sliderInterval = setInterval(nextSlide, 3500);
+    });
+
+    // EMI Calculator Logic
+    document.getElementById('emiForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const P = parseFloat(document.getElementById('loanAmount').value);
+      const R = parseFloat(document.getElementById('interestRate').value) / 12 / 100;
+      const N = parseInt(document.getElementById('loanTenure').value) * 12;
+      if (P > 0 && R > 0 && N > 0) {
+        const emi = (P * R * Math.pow(1 + R, N)) / (Math.pow(1 + R, N) - 1);
+        document.getElementById('emiResult').textContent = `Monthly EMI: ₹${emi.toLocaleString(undefined, {maximumFractionDigits:0})}`;
+      } else {
+        document.getElementById('emiResult').textContent = 'Please enter valid values.';
+      }
+    });
+  </script>
+</body>
+</html>

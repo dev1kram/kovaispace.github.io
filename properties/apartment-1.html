@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Skyline Heights - Peelamedu | KovaiSpace Developers</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    body { background: #f5f5f5; margin: 0; font-family: 'Segoe UI', Arial, sans-serif; }
+    .apartment-detail-container {
+      max-width: 900px;
+      margin: 36px auto 0 auto;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(44,62,80,0.07);
+      padding: 32px 24px 28px 24px;
+    }
+    .apartment-title {
+      color: #388e3c;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .apartment-location {
+      color: #666;
+      font-size: 1.08rem;
+      margin-bottom: 18px;
+    }
+    .apartment-slider {
+      position: relative;
+      min-height: 210px;
+      margin-bottom: 24px;
+      overflow-x: auto;
+    }
+    .apartment-slider img {
+      width: 320px;
+      height: 210px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 1px 8px rgba(44,62,80,0.09);
+      opacity: 0;
+      position: absolute;
+      left: 0;
+      top: 0;
+      transition: opacity 0.7s;
+    }
+    .apartment-slider img.active {
+      opacity: 1;
+      position: relative;
+      z-index: 2;
+    }
+    .apartment-section-title {
+      color: #4caf50;
+      font-size: 1.25rem;
+      margin: 28px 0 12px 0;
+      font-weight: 700;
+    }
+    .apartment-amenities, .apartment-infra {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 18px 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px 32px;
+    }
+    .apartment-amenities li, .apartment-infra li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.05rem;
+      color: #444;
+      min-width: 220px;
+    }
+    .apartment-amenities li i, .apartment-infra li i {
+      color: #4caf50;
+      font-size: 1.2rem;
+      min-width: 22px;
+    }
+    .apartment-desc {
+      color: #444;
+      font-size: 1.08rem;
+      margin-bottom: 18px;
+    }
+    .emi-section { background:#fff; padding:40px 10px 30px 10px; text-align:center; max-width: 400px; margin: 40px auto 40px auto; border-radius: 14px; box-shadow: 0 2px 12px rgba(44,62,80,0.07);}
+    .emi-section h2 { color:#4caf50; font-size:2rem; margin-bottom:18px; font-weight:700;}
+    .emi-section input, .emi-section button { width:100%; padding:10px; border-radius:6px; border:1px solid #ccc; margin-bottom:14px; font-size:1rem;}
+    .emi-section button { background: #388e3c; color: #fff; border: none; font-weight: 600; cursor: pointer; margin-bottom: 0;}
+    .emi-section #emiResult { margin-top:18px; font-size:1.15rem; color:#388e3c; font-weight:600;}
+    .book-btn {
+      display: inline-block;
+      margin: 20px 0;
+      padding: 10px 20px;
+      background-color: #4caf50;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 6px;
+      text-align: center;
+    }
+    .book-btn:hover {
+      background-color: #388e3c;
+    }
+    @media (max-width: 700px) {
+      .apartment-detail-container { padding: 14px 4vw 18px 4vw; }
+      .apartment-slider { min-height: 160px; }
+      .apartment-slider img { width: 100%; height: 160px; }
+      .apartment-amenities li, .apartment-infra li { min-width: 140px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <div class="logo">
+        <a href="../index.html">
+          <img src="../images/logo.png" alt="KovaiSpace Logo" />
+        </a>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About Us</a></li>
+          <li class="dropdown">
+            <a href="../properties.html">Properties</a>
+            <ul class="dropdown-menu">
+              <li><a href="house.html">Houses</a></li>
+              <li><a href="gated-community.html">Gated Communities</a></li>
+              <li><a href="apartment.html" class="active">Apartments</a></li>
+            </ul>
+          </li>
+          <li><a href="../blog.html">Blog</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+          <li><a href="../book.html" class="btn-primary">Book</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <a href="apartment.html" style="text-decoration:none;color:#388e3c;display:inline-block;font-weight:600;font-size:1.05rem;margin:24px 0 0 24px;">
+    <i class="fas fa-arrow-left"></i>Back to Apartments
+  </a>
+  <div class="apartment-detail-container">
+    <div class="apartment-title">Skyline Heights</div>
+    <div class="apartment-location"><i class="fas fa-map-marker-alt"></i> Peelamedu, Coimbatore</div>
+    <div class="apartment-slider" id="ap1-slider">
+      <img src="../images/apartment1_1.jpg" alt="Skyline Heights 1" class="active" />
+      <img src="../images/apartment1_2.jpg" alt="Skyline Heights 2" />
+      <img src="../images/apartment1_3.jpg" alt="Skyline Heights 3" />
+    </div>
+    <a href="../book.html" class="book-btn">Book This Apartment</a>
+    <div class="apartment-desc">
+      Skyline Heights offers premium 2 & 3 BHK apartments in the heart of Peelamedu. Enjoy modern living with world-class amenities, excellent connectivity, and a vibrant community atmosphere.
+    </div>
+    <div class="apartment-section-title">Amenities</div>
+    <ul class="apartment-amenities">
+      <li><i class="fas fa-swimming-pool"></i> Rooftop Swimming Pool</li>
+      <li><i class="fas fa-dumbbell"></i> Fully Equipped Gym</li>
+      <li><i class="fas fa-users"></i> Club House & Party Hall</li>
+      <li><i class="fas fa-child"></i> Children's Play Area</li>
+      <li><i class="fas fa-shield-alt"></i> 24x7 Security & CCTV</li>
+      <li><i class="fas fa-car"></i> Covered Car Parking</li>
+      <li><i class="fas fa-tree"></i> Landscaped Gardens</li>
+      <li><i class="fas fa-wifi"></i> Wi-Fi Enabled Common Areas</li>
+      <li><i class="fas fa-bolt"></i> Power Backup</li>
+      <li><i class="fas fa-store"></i> Mini Supermarket</li>
+    </ul>
+    <div class="apartment-section-title">Infrastructure Highlights</div>
+    <ul class="apartment-infra">
+      <li><i class="fas fa-building"></i> Earthquake-Resistant RCC Structure</li>
+      <li><i class="fas fa-elevator"></i> High-Speed Elevators</li>
+      <li><i class="fas fa-water"></i> Rainwater Harvesting System</li>
+      <li><i class="fas fa-solar-panel"></i> Solar Power for Common Areas</li>
+      <li><i class="fas fa-fire-extinguisher"></i> Fire Safety Systems</li>
+      <li><i class="fas fa-fan"></i> Modern Ventilation & Lighting</li>
+      <li><i class="fas fa-door-open"></i> Premium Vitrified Tile Flooring</li>
+      <li><i class="fas fa-bath"></i> Branded Bath Fittings</li>
+    </ul>
+    <div class="apartment-section-title">Apartment Types</div>
+    <div class="apartment-desc">
+      <strong>2 BHK:</strong> 1100 – 1250 sq.ft<br>
+      <strong>3 BHK:</strong> 1450 – 1650 sq.ft<br>
+      <strong>Price Range:</strong> ₹65 Lakh – ₹1.1 Cr
+    </div>
+  </div>
+
+  <!-- EMI Calculator Section -->
+  <section class="emi-section" id="emi-calculator">
+    <h2>EMI Calculator</h2>
+    <form id="emiForm" style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
+      <div style="width:100%;display:flex;gap:10px;">
+        <input type="number" id="loanAmount" placeholder="Loan Amount (₹)" required style="flex:1;" />
+        <input type="number" id="interestRate" placeholder="Interest Rate (%)" required step="0.01" style="flex:1;" />
+      </div>
+      <div style="width:100%;display:flex;gap:10px;">
+        <input type="number" id="loanTenure" placeholder="Tenure (years)" required style="flex:1;" />
+        <button type="submit" style="flex:1;max-width:180px;">Calculate EMI</button>
+      </div>
+    </form>
+    <div id="emiResult"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About Us</a></li>
+          <li><a href="../properties.html">Properties</a></li>
+          <li><a href="../blog.html">Blog</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <h3>Follow Us</h3>
+        <a href="https://facebook.com/kovaispace" aria-label="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com/kovaispace" aria-label="Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://instagram.com/kovaispace" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://linkedin.com/company/kovaispace" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <div class="footer-details">
+        <img src="../images/logo.png" alt="KovaiSpace Logo">
+        <p><strong>KovaiSpace Developers (India) Pvt. Ltd.</strong></p>
+        <p>123 Kovai, Thudiyalur, Tamil Nadu, India</p>
+        <p>+91 911111111</p>
+        <p><a href="mailto:kovaispace@space.com" style="color:#4caf50;">kovaispace@space.com</a></p>
+        <p>© 2025 KovaiSpace Developers. All rights reserved.</p>
+      </div>
+    </div>
+    <div class="footer-quote">
+      <p>"Home is not a place... it's a feeling. Let us help you find yours."</p>
+    </div>
+  </footer>
+
+  <script>
+    // EMI Calculator Logic
+    document.getElementById('emiForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const P = parseFloat(document.getElementById('loanAmount').value);
+      const R = parseFloat(document.getElementById('interestRate').value) / 12 / 100;
+      const N = parseInt(document.getElementById('loanTenure').value) * 12;
+      if (P > 0 && R > 0 && N > 0) {
+        const emi = (P * R * Math.pow(1 + R, N)) / (Math.pow(1 + R, N) - 1);
+        document.getElementById('emiResult').textContent = `Monthly EMI: ₹${emi.toLocaleString(undefined, {maximumFractionDigits:0})}`;
+      } else {
+        document.getElementById('emiResult').textContent = 'Please enter valid values.';
+      }
+    });
+
+    // Apartment slider animation
+    function animateSlider(sliderId) {
+      const imgs = document.querySelectorAll(`#${sliderId} img`);
+      let idx = 0;
+      setInterval(() => {
+        imgs[idx].classList.remove('active');
+        idx = (idx + 1) % imgs.length;
+        imgs[idx].classList.add('active');
+      }, 2500);
+    }
+    animateSlider('ap1-slider');
+  </script>
+</body>
+</html>
+``` 
