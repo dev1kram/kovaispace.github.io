@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Us | KovaiSpace Developers</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    body { background: #f5f5f5; margin: 0; font-family: 'Segoe UI', Arial, sans-serif; }
+    .contact-hero {
+      min-height: 36vh;
+      background: url('images/contact-hero.jpg') center center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+      position: relative;
+    }
+    .contact-hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(44,62,80,0.45);
+      z-index: 1;
+    }
+    .contact-hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 48px 20px 32px 20px;
+    }
+    .contact-hero h1 {
+      font-size: 2.2rem;
+      margin-bottom: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .contact-hero p {
+      font-size: 1.15rem;
+      margin-bottom: 0;
+      font-style: italic;
+    }
+    .contact-container {
+      max-width: 1100px;
+      margin: 48px auto 40px auto; /* Increased top margin for spacing from hero */
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(44,62,80,0.07);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      overflow: hidden;
+    }
+    .contact-info {
+      flex: 1 1 340px;
+      padding: 48px 40px 40px 48px; /* Increased padding for more space */
+      background: #f8faf8;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 320px;
+    }
+    .contact-info h2 {
+      color: #388e3c;
+      font-size: 1.35rem;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+    .contact-info ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 18px 0;
+    }
+    .contact-info li {
+      margin-bottom: 16px;
+      font-size: 1.08rem;
+      color: #444;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .contact-info li i {
+      color: #4caf50;
+      font-size: 1.18rem;
+      min-width: 22px;
+    }
+    .contact-info .contact-quote {
+      margin-top: 24px;
+      font-style: italic;
+      color: #388e3c;
+      font-size: 1.08rem;
+      border-left: 3px solid #4caf50;
+      padding-left: 14px;
+    }
+    .map {
+      margin-top: 32px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(44,62,80,0.09);
+    }
+    .contact-image {
+      flex: 1 1 340px;
+      min-width: 320px;
+      background: url('images/contact-team.jpg') center center/cover no-repeat;
+      min-height: 340px;
+      display: none;
+    }
+    .contact-form-section {
+      flex: 2 1 420px;
+      padding: 48px 48px 40px 48px; /* Increased padding for more space */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 320px;
+    }
+    .contact-form-section h2 {
+      color: #388e3c;
+      font-size: 1.25rem;
+      margin-bottom: 18px;
+      font-weight: 700;
+      text-align: left;
+    }
+    .contact-form label {
+      display: block;
+      margin-bottom: 6px;
+      color: #333;
+      font-weight: 500;
+      font-size: 1.04rem;
+    }
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-bottom: 16px;
+      font-size: 1rem;
+      background: #fafafa;
+      transition: border 0.2s;
+    }
+    .contact-form input:focus, .contact-form textarea:focus {
+      border: 1.5px solid #388e3c;
+      outline: none;
+    }
+    .contact-form button {
+      width: 100%;
+      padding: 12px;
+      border-radius: 6px;
+      border: none;
+      background: #388e3c;
+      color: #fff;
+      font-size: 1.08rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .contact-form button:hover {
+      background: #256029;
+    }
+    .contact-success {
+      color: #388e3c;
+      font-weight: 600;
+      text-align: center;
+      margin-top: 18px;
+      font-size: 1.08rem;
+      display: none;
+    }
+    @media (min-width: 900px) {
+      .contact-image { display: block; }
+    }
+    @media (max-width: 900px) {
+      .contact-container { flex-direction: column; margin: 32px 0 24px 0; }
+      .contact-info, .contact-form-section { padding: 28px 6vw 18px 6vw; }
+      .contact-image { min-height: 180px; }
+    }
+    @media (max-width: 600px) {
+      .contact-info, .contact-form-section { padding: 18px 4vw 12px 4vw; }
+      .contact-hero-content { padding: 28px 4vw 18px 4vw; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <div class="logo">
+        <a href="index.html">
+          <img src="images/logo.png" alt="KovaiSpace Logo" />
+        </a>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li class="dropdown">
+            <a href="properties.html">Properties</a>
+            <ul class="dropdown-menu">
+              <li><a href="properties/house.html">Houses</a></li>
+              <li><a href="properties/gated-community.html">Gated Communities</a></li>
+              <li><a href="properties/apartment.html">Apartments</a></li>
+            </ul>
+          </li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html" class="active">Contact</a></li>
+          <li><a href="book.html" class="btn-primary">Book</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="contact-hero">
+    <div class="contact-hero-content">
+      <h1>Contact Us</h1>
+      <p>"The best way to find yourself is to lose yourself in the service of others." <br>— Mahatma Gandhi</p>
+    </div>
+  </section>
+
+  <main>
+    <div class="contact-container">
+      <div class="contact-info">
+        <h2>Get in Touch</h2>
+        <ul>
+          <li><i class="fas fa-map-marker-alt"></i>123 Kovai, Thudiyalur, Tamil Nadu, India</li>
+          <li><i class="fas fa-phone"></i>+91 911111111</li>
+          <li><i class="fas fa-envelope"></i><a href="mailto:kovaispace@space.com" style="color:#388e3c;text-decoration:none;">kovaispace@space.com</a></li>
+          <li><i class="fab fa-whatsapp"></i><a href="https://wa.me/91911111111" style="color:#388e3c;text-decoration:none;">WhatsApp Us</a></li>
+        </ul>
+        <div>
+          <a href="https://facebook.com/kovaispace" aria-label="Facebook" target="_blank" style="margin-right:12px;color:#4caf50;"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://twitter.com/kovaispace" aria-label="Twitter" target="_blank" style="margin-right:12px;color:#4caf50;"><i class="fab fa-twitter"></i></a>
+          <a href="https://instagram.com/kovaispace" aria-label="Instagram" target="_blank" style="margin-right:12px;color:#4caf50;"><i class="fab fa-instagram"></i></a>
+          <a href="https://linkedin.com/company/kovaispace" aria-label="LinkedIn" target="_blank" style="color:#4caf50;"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <div class="contact-quote">
+          "We believe every message is the start of a new relationship. Reach out—your dream home and a friendly team are just a conversation away!"
+        </div>
+      </div>
+      <div class="contact-image"></div>
+      <div class="contact-form-section">
+        <h2>Send Us a Message</h2>
+        <form class="contact-form" id="contactForm" autocomplete="off">
+          <label for="name">Full Name *</label>
+          <input type="text" id="name" name="name" required />
+
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" name="email" required />
+
+          <label for="phone">Mobile Number</label>
+          <input type="tel" id="phone" name="phone" pattern="[0-9]{10,12}" maxlength="12" />
+
+          <label for="message">Your Message *</label>
+          <textarea id="message" name="message" rows="4" required placeholder="How can we help you?"></textarea>
+
+          <button type="submit">Send Message</button>
+          <div class="contact-success" id="contactSuccess">Thank you! Your message has been sent. We will get back to you soon.</div>
+        </form>
+      </div>
+    </div>
+    <div class="map" style="margin:48px 0 0 0; border-radius:0; overflow:hidden; box-shadow:none; width:100vw; max-width:100vw; position:relative; left:50%; right:50%; transform:translateX(-50%);">
+        <iframe 
+          src="https://www.google.com/maps?q=Race+Course+Road,+Coimbatore,+Tamil+Nadu&output=embed" 
+          width="100%" height="420" frameborder="0" style="border:0; display:block;" allowfullscreen=""
+          title="Map of Race Course Road, Coimbatore"></iframe>
+      </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="properties.html">Properties</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <h3>Follow Us</h3>
+        <a href="https://facebook.com/kovaispace" aria-label="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com/kovaispace" aria-label="Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://instagram.com/kovaispace" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://linkedin.com/company/kovaispace" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <div class="footer-details">
+        <img src="images/logo.png" alt="KovaiSpace Logo">
+        <p><strong>KovaiSpace Developers (India) Pvt. Ltd.</strong></p>
+        <p>123 Kovai, Thudiyalur, Tamil Nadu, India</p>
+        <p>+91 911111111</p>
+        <p><a href="mailto:kovaispace@space.com" style="color:#4caf50;">kovaispace@space.com</a></p>
+        <p>© 2025 KovaiSpace Developers. All rights reserved.</p>
+      </div>
+    </div>
+    <div class="footer-quote">
+      <p>"Home is not a place... it's a feeling. Let us help you find yours."</p>
+    </div>
+  </footer>
+
+  <script>
+    // Simple contact form handler (demo only)
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('contactSuccess').style.display = 'block';
+      this.reset();
+      setTimeout(() => {
+        document.getElementById('contactSuccess').style.display = 'none';
+      }, 6000);
+    });
+  </script>
+</body>
+</html>

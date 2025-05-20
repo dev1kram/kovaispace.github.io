@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blog | KovaiSpace Developers</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    body { background: #f5f5f5; margin: 0; font-family: 'Segoe UI', Arial, sans-serif; }
+    .blog-hero {
+      min-height: 38vh;
+      background: url('images/blog-hero.jpg') center center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+      position: relative;
+    }
+    .blog-hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(44,62,80,0.45);
+      z-index: 1;
+    }
+    .blog-hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 60px 20px 40px 20px;
+    }
+    .blog-hero h1 {
+      font-size: 2.3rem;
+      margin-bottom: 16px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .blog-hero p {
+      font-size: 1.2rem;
+      margin-bottom: 0;
+    }
+    .blog-container {
+      max-width: 1100px;
+      margin: -60px auto 0 auto;
+      padding: 0 16px 40px 16px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 36px;
+      position: relative;
+      z-index: 2;
+    }
+    .blog-card {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(44,62,80,0.07);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.2s, transform 0.2s;
+      min-height: 420px;
+    }
+    .blog-card:hover {
+      box-shadow: 0 6px 32px rgba(44,62,80,0.13);
+      transform: translateY(-6px) scale(1.01);
+    }
+    .blog-img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      display: block;
+    }
+    .blog-content {
+      padding: 22px 20px 18px 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .blog-title {
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: #388e3c;
+      margin-bottom: 10px;
+    }
+    .blog-meta {
+      color: #888;
+      font-size: 0.97rem;
+      margin-bottom: 10px;
+    }
+    .blog-desc {
+      color: #444;
+      font-size: 1.03rem;
+      margin-bottom: 18px;
+      flex: 1;
+    }
+    .read-more {
+      color: #4caf50;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 1.01rem;
+      transition: color 0.2s;
+      align-self: flex-start;
+    }
+    .read-more:hover { color: #388e3c; text-decoration: underline; }
+    @media (max-width: 700px) {
+      .blog-hero-content { padding: 36px 8vw 24px 8vw; }
+      .blog-container { grid-template-columns: 1fr; gap: 22px; }
+      .blog-card { min-height: 340px; }
+      .blog-img { height: 150px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <div class="logo">
+        <a href="index.html">
+          <img src="images/logo.png" alt="KovaiSpace Logo" />
+        </a>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li class="dropdown">
+            <a href="properties.html">Properties</a>
+            <ul class="dropdown-menu">
+              <li><a href="properties/house.html">Houses</a></li>
+              <li><a href="properties/gated-community.html">Gated Communities</a></li>
+              <li><a href="properties/apartment.html">Apartments</a></li>
+            </ul>
+          </li>
+          <li><a href="blog.html" class="active">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="book.html" class="btn-primary">Book</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="blog-hero">
+    <div class="blog-hero-content">
+      <h1>Insights & Updates</h1>
+      <p>Stay updated with the latest trends, tips, and news in Coimbatore real estate.</p>
+    </div>
+  </section>
+
+  <main>
+    <div class="blog-container">
+      <!-- Blog Post 1 -->
+      <div class="blog-card">
+        <img src="images/blog1.jpg" alt="Why Gated Communities Are Popular in Coimbatore" class="blog-img" />
+        <div class="blog-content">
+          <div class="blog-title">Why Gated Communities Are Popular in Coimbatore</div>
+          <div class="blog-meta"><i class="fas fa-calendar-alt"></i> May 2025 &nbsp; | &nbsp; By KovaiSpace Team</div>
+          <div class="blog-desc">
+            Discover the reasons behind the rising demand for gated communities in Coimbatore, including safety, amenities, and community living advantages.
+          </div>
+          <a href="blog-post-1.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <!-- Blog Post 2 -->
+      <div class="blog-card">
+        <img src="images/blog2.jpg" alt="Apartment vs. Villa: Which Is Right for You?" class="blog-img" />
+        <div class="blog-content">
+          <div class="blog-title">Apartment vs. Villa: Which Is Right for You?</div>
+          <div class="blog-meta"><i class="fas fa-calendar-alt"></i> April 2025 &nbsp; | &nbsp; By KovaiSpace Team</div>
+          <div class="blog-desc">
+            Weigh the pros and cons of apartments and villas in Coimbatore to make an informed property investment decision for your family.
+          </div>
+          <a href="blog-post-2.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <!-- Blog Post 3 -->
+      <div class="blog-card">
+        <img src="images/blog3.jpg" alt="Top 5 Localities for Homebuyers in Coimbatore" class="blog-img" />
+        <div class="blog-content">
+          <div class="blog-title">Top 5 Localities for Homebuyers in Coimbatore</div>
+          <div class="blog-meta"><i class="fas fa-calendar-alt"></i> March 2025 &nbsp; | &nbsp; By KovaiSpace Team</div>
+          <div class="blog-desc">
+            Explore the most sought-after neighborhoods in Coimbatore for buying a house or apartment, with insights on connectivity and lifestyle.
+          </div>
+          <a href="blog-post-3.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <!-- Blog Post 4 -->
+      <div class="blog-card">
+        <img src="images/blog4.jpg" alt="Home Loan Tips for First-Time Buyers" class="blog-img" />
+        <div class="blog-content">
+          <div class="blog-title">Home Loan Tips for First-Time Buyers</div>
+          <div class="blog-meta"><i class="fas fa-calendar-alt"></i> February 2025 &nbsp; | &nbsp; By KovaiSpace Team</div>
+          <div class="blog-desc">
+            Get practical advice on securing a home loan in Coimbatore, including eligibility, documentation, and choosing the right lender.
+          </div>
+          <a href="blog-post-4.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <!-- Blog Post 5 -->
+      <div class="blog-card">
+        <img src="images/blog5.jpg" alt="Sustainable Living: Eco-Friendly Homes in Coimbatore" class="blog-img" />
+        <div class="blog-content">
+          <div class="blog-title">Sustainable Living: Eco-Friendly Homes in Coimbatore</div>
+          <div class="blog-meta"><i class="fas fa-calendar-alt"></i> January 2025 &nbsp; | &nbsp; By KovaiSpace Team</div>
+          <div class="blog-desc">
+            Learn about green building trends, rainwater harvesting, and solar-powered homes that are shaping the future of Coimbatore real estate.
+          </div>
+          <a href="blog-post-5.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="properties.html">Properties</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <h3>Follow Us</h3>
+        <a href="https://facebook.com/kovaispace" aria-label="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com/kovaispace" aria-label="Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://instagram.com/kovaispace" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://linkedin.com/company/kovaispace" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <div class="footer-details">
+        <img src="images/logo.png" alt="KovaiSpace Logo">
+        <p><strong>KovaiSpace Developers (India) Pvt. Ltd.</strong></p>
+        <p>123 Kovai, Thudiyalur, Tamil Nadu, India</p>
+        <p>+91 911111111</p>
+        <p><a href="mailto:kovaispace@space.com" style="color:#4caf50;">kovaispace@space.com</a></p>
+        <p>© 2025 KovaiSpace Developers. All rights reserved.</p>
+      </div>
+    </div>
+    <div class="footer-quote">
+      <p>"Home is not a place... it's a feeling. Let us help you find yours."</p>
+    </div>
+  </footer>
+</body>
+</html>

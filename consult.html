@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Book a Free Consultation | KovaiSpace Developers</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    body { background: #f5f5f5; margin: 0; font-family: 'Segoe UI', Arial, sans-serif; }
+    .consult-hero {
+      min-height: 32vh;
+      background: url('images/consult-hero.jpg') center center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+      position: relative;
+    }
+    .consult-hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(44,62,80,0.45);
+      z-index: 1;
+    }
+    .consult-hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 48px 20px 32px 20px;
+    }
+    .consult-hero h1 {
+      font-size: 2.1rem;
+      margin-bottom: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .consult-hero p {
+      font-size: 1.15rem;
+      margin-bottom: 0;
+      font-style: italic;
+    }
+    .consult-container {
+      max-width: 500px;
+      margin: -40px auto 40px auto;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(44,62,80,0.07);
+      padding: 38px 32px 32px 32px;
+    }
+    .consult-container h2 {
+      color: #388e3c;
+      font-size: 1.25rem;
+      margin-bottom: 18px;
+      font-weight: 700;
+      text-align: center;
+    }
+    .consult-form label {
+      display: block;
+      margin-bottom: 6px;
+      color: #333;
+      font-weight: 500;
+      font-size: 1.04rem;
+    }
+    .consult-form input, .consult-form textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-bottom: 16px;
+      font-size: 1rem;
+      background: #fafafa;
+      transition: border 0.2s;
+    }
+    .consult-form input:focus, .consult-form textarea:focus {
+      border: 1.5px solid #388e3c;
+      outline: none;
+    }
+    .consult-form button {
+      width: 100%;
+      padding: 12px;
+      border-radius: 6px;
+      border: none;
+      background: #388e3c;
+      color: #fff;
+      font-size: 1.08rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .consult-form button:hover {
+      background: #256029;
+    }
+    .consult-success {
+      color: #388e3c;
+      font-weight: 600;
+      text-align: center;
+      margin-top: 18px;
+      font-size: 1.08rem;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header (same as index.html) -->
+  <header>
+    <div class="container header-container">
+      <div class="logo">
+        <a href="index.html">
+          <img src="images/logo.png" alt="KovaiSpace Logo" />
+        </a>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li class="dropdown">
+            <a href="properties.html">Properties</a>
+            <ul class="dropdown-menu">
+              <li><a href="properties/house.html">Houses</a></li>
+              <li><a href="properties/gated-community.html">Gated Communities</a></li>
+              <li><a href="properties/apartment.html">Apartments</a></li>
+            </ul>
+          </li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="book.html" class="btn-primary">Book</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="consult-hero">
+    <div class="consult-hero-content">
+      <h1>Book a Free Consultation</h1>
+      <p>"Let our experts guide you to your dream property in Coimbatore."</p>
+    </div>
+  </section>
+
+  <main>
+    <div class="consult-container">
+      <h2>Request a Consultation</h2>
+      <form class="consult-form" id="consultForm" autocomplete="off">
+        <label for="name">Full Name *</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Email Address *</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="phone">Mobile Number *</label>
+        <input type="tel" id="phone" name="phone" pattern="[0-9]{10,12}" maxlength="12" required />
+
+        <label for="message">Your Query</label>
+        <textarea id="message" name="message" rows="4" placeholder="Tell us what you need help with..."></textarea>
+
+        <button type="submit">Book Consultation</button>
+        <div class="consult-success" id="consultSuccess">Thank you! Your consultation request has been received. Our team will contact you soon.</div>
+      </form>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="properties.html">Properties</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <h3>Follow Us</h3>
+        <a href="https://facebook.com/kovaispace" aria-label="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com/kovaispace" aria-label="Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://instagram.com/kovaispace" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://linkedin.com/company/kovaispace" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <div class="footer-details">
+        <img src="images/logo.png" alt="KovaiSpace Logo">
+        <p><strong>KovaiSpace Developers (India) Pvt. Ltd.</strong></p>
+        <p>123 Kovai, Thudiyalur, Tamil Nadu, India</p>
+        <p>+91 911111111</p>
+        <p><a href="mailto:kovaispace@space.com" style="color:#4caf50;">kovaispace@space.com</a></p>
+        <p>© 2025 KovaiSpace Developers. All rights reserved.</p>
+      </div>
+    </div>
+    <div class="footer-quote">
+      <p>"Home is not a place... it's a feeling. Let us help you find yours."</p>
+    </div>
+  </footer>
+
+  <script>
+    // Simple consult form handler (demo only)
+    document.getElementById('consultForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('consultSuccess').style.display = 'block';
+      this.reset();
+      setTimeout(() => {
+        document.getElementById('consultSuccess').style.display = 'none';
+      }, 6000);
+    });
+  </script>
+</body>
+</html>

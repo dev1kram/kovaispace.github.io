@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Us | KovaiSpace Developers</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    body { background: #f5f5f5; margin: 0; font-family: 'Segoe UI', Arial, sans-serif; }
+    .about-hero {
+      min-height: 48vh;
+      background: linear-gradient(rgba(44,62,80,0.55),rgba(44,62,80,0.45)), url('images/about-hero.jpg') center center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 4px 24px rgba(44,62,80,0.12);
+    }
+    .about-hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 70px 20px 50px 20px;
+      animation: fadeInDown 1.2s;
+    }
+    .about-hero h1 {
+      font-size: 2.7rem;
+      margin-bottom: 18px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-shadow: 0 2px 12px rgba(44,62,80,0.18);
+    }
+    .about-hero p {
+      font-size: 1.25rem;
+      margin-bottom: 24px;
+      font-weight: 500;
+      text-shadow: 0 1px 8px rgba(44,62,80,0.13);
+    }
+
+    /* About Section */
+    .about-section {
+      max-width: 1100px;
+      margin: 56px auto 40px auto;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(44,62,80,0.10);
+      padding: 48px 36px 38px 36px;
+      color: #333;
+      display: flex;
+      gap: 48px;
+      align-items: flex-start;
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 1.2s;
+    }
+    .about-section::before {
+      content: "";
+      position: absolute;
+      top: -60px; left: -60px;
+      width: 180px; height: 180px;
+      background: radial-gradient(circle, #e8f5e9 60%, transparent 100%);
+      z-index: 0;
+      opacity: 0.7;
+    }
+    .about-section .about-img {
+      flex: 0 0 270px;
+      max-width: 270px;
+      border-radius: 16px;
+      box-shadow: 0 2px 16px rgba(44,62,80,0.13);
+      object-fit: cover;
+      height: 270px;
+      border: 4px solid #e0f2f1;
+      z-index: 1;
+      background: #f8faf8;
+    }
+    .about-section-content {
+      flex: 1;
+      z-index: 1;
+    }
+    .about-section h2 {
+      color: #388e3c;
+      font-size: 1.8rem;
+      margin-bottom: 18px;
+      font-weight: 700;
+      text-align: left;
+      letter-spacing: 0.5px;
+    }
+    .about-section p {
+      font-size: 1.13rem;
+      margin-bottom: 18px;
+      line-height: 1.75;
+      color: #444;
+    }
+    .about-values {
+      margin: 32px 0 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+    }
+    .about-values li {
+      background: linear-gradient(90deg, #e8f5e9 60%, #fff 100%);
+      border-radius: 10px;
+      padding: 22px 18px;
+      box-shadow: 0 1px 8px rgba(44,62,80,0.06);
+      color: #388e3c;
+      font-weight: 600;
+      font-size: 1.08rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .about-values li:hover {
+      box-shadow: 0 4px 18px rgba(44,62,80,0.13);
+      transform: translateY(-4px) scale(1.03);
+    }
+    .about-values li i {
+      font-size: 1.4rem;
+      color: #4caf50;
+      margin-top: 2px;
+      filter: drop-shadow(0 1px 2px #b2dfdb);
+    }
+
+    /* Timeline Styles */
+    .timeline-section {
+      max-width: 950px;
+      margin: 56px auto 40px auto;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(44,62,80,0.10);
+      padding: 48px 36px 38px 36px;
+      animation: fadeInUp 1.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .timeline-section::after {
+      content: "";
+      position: absolute;
+      bottom: -60px; right: -60px;
+      width: 180px; height: 180px;
+      background: radial-gradient(circle, #e8f5e9 60%, transparent 100%);
+      z-index: 0;
+      opacity: 0.7;
+    }
+    .timeline-title {
+      color: #388e3c;
+      font-size: 1.7rem;
+      margin-bottom: 32px;
+      font-weight: 700;
+      text-align: center;
+      letter-spacing: 0.5px;
+    }
+    .timeline {
+      position: relative;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(#4caf50 60%, #e8f5e9 100%);
+      transform: translateX(-50%);
+      z-index: 0;
+      border-radius: 2px;
+    }
+    .timeline-event {
+      position: relative;
+      width: 50%;
+      padding: 32px 36px;
+      box-sizing: border-box;
+      opacity: 0;
+      transform: translateY(40px) scale(0.98);
+      transition: opacity 0.8s, transform 0.8s;
+    }
+    .timeline-event.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    .timeline-event.left {
+      left: 0;
+      text-align: right;
+    }
+    .timeline-event.right {
+      left: 50%;
+      text-align: left;
+    }
+    .timeline-event-content {
+      background: linear-gradient(90deg, #e8f5e9 60%, #fff 100%);
+      border-radius: 12px;
+      padding: 22px 26px;
+      box-shadow: 0 2px 12px rgba(44,62,80,0.08);
+      display: inline-block;
+      position: relative;
+      z-index: 2;
+      min-width: 220px;
+      max-width: 340px;
+      animation: fadeInUp 1.2s;
+    }
+    .timeline-event.left .timeline-event-content {
+      margin-right: 36px;
+    }
+    .timeline-event.right .timeline-event-content {
+      margin-left: 36px;
+    }
+    .timeline-event .timeline-date {
+      font-size: 1.08rem;
+      color: #388e3c;
+      font-weight: 700;
+      margin-bottom: 6px;
+      display: block;
+      letter-spacing: 0.5px;
+    }
+    .timeline-event .timeline-title-small {
+      font-size: 1.18rem;
+      color: #232323;
+      font-weight: 700;
+      margin-bottom: 6px;
+      letter-spacing: 0.2px;
+    }
+    .timeline-event .timeline-desc {
+      font-size: 1.05rem;
+      color: #444;
+      line-height: 1.6;
+    }
+    .timeline-dot {
+      position: absolute;
+      top: 44px;
+      left: 50%;
+      width: 22px;
+      height: 22px;
+      background: #fff;
+      border: 5px solid #4caf50;
+      border-radius: 50%;
+      z-index: 3;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 2px 8px rgba(44,62,80,0.13);
+      transition: box-shadow 0.2s;
+    }
+    .timeline-event.visible .timeline-dot {
+      box-shadow: 0 4px 18px #a5d6a7;
+    }
+    @media (max-width: 900px) {
+      .about-section, .timeline-section { padding: 24px 4vw 18px 4vw; }
+      .about-section { flex-direction: column; gap: 18px; }
+      .about-section .about-img { margin: 0 auto; width: 90vw; max-width: 320px; height: 180px; }
+      .about-values { grid-template-columns: 1fr; }
+      .timeline-section { padding: 24px 4vw 18px 4vw; }
+      .timeline::before { left: 18px; }
+      .timeline-event {
+        width: 100%;
+        padding: 32px 0 32px 44px;
+        text-align: left;
+      }
+      .timeline-event.left .timeline-event-content,
+      .timeline-event.right .timeline-event-content {
+        margin: 0 0 0 32px;
+        max-width: 95vw;
+      }
+      .timeline-dot { left: 18px; }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-40px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <div class="logo">
+        <a href="index.html">
+          <img src="images/logo.png" alt="KovaiSpace Logo" />
+        </a>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html" class="active">About Us</a></li>
+          <li class="dropdown">
+            <a href="properties.html">Properties</a>
+            <ul class="dropdown-menu">
+              <li><a href="properties/house.html">Houses</a></li>
+              <li><a href="properties/gated-community.html">Gated Communities</a></li>
+              <li><a href="properties/apartment.html">Apartments</a></li>
+            </ul>
+          </li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="book.html" class="btn-primary">Book</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="about-hero">
+    <div class="about-hero-content">
+      <h1>About KovaiSpace Developers</h1>
+      <p>Our journey, our milestones, our promise to you.</p>
+    </div>
+  </section>
+
+  <!-- About Content Section -->
+  <section class="about-section">
+    <img src="images/about-team.jpg" alt="Our Team" class="about-img" />
+    <div class="about-section-content">
+      <h2>Who We Are</h2>
+      <p>
+        KovaiSpace Developers is a leading real estate company based in Coimbatore, dedicated to creating exceptional living spaces that blend comfort, style, and sustainability. With years of experience and a passion for excellence, we have helped hundreds of families find their dream homes in the city’s most sought-after locations.
+      </p>
+      <h2>Our Mission</h2>
+      <p>
+        To deliver high-quality, innovative, and affordable homes that enrich lives and communities. We believe in transparency, customer satisfaction, and building lasting relationships.
+      </p>
+      <h2>Our Values</h2>
+      <ul class="about-values">
+        <li><i class="fas fa-handshake"></i> Integrity & Trust</li>
+        <li><i class="fas fa-users"></i> Customer Focus</li>
+        <li><i class="fas fa-leaf"></i> Sustainability</li>
+        <li><i class="fas fa-lightbulb"></i> Innovation</li>
+        <li><i class="fas fa-award"></i> Quality</li>
+        <li><i class="fas fa-heart"></i> Community</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Timeline Section -->
+  <section class="timeline-section">
+    <div class="timeline-title">Our Story</div>
+    <ul class="timeline">
+      <li class="timeline-event left">
+        <div class="timeline-dot"></div>
+        <div class="timeline-event-content">
+          <span class="timeline-date">2012</span>
+          <div class="timeline-title-small">KovaiSpace Founded</div>
+          <div class="timeline-desc">KovaiSpace Developers is established in Coimbatore with a vision to redefine urban living and deliver quality homes.</div>
+        </div>
+      </li>
+      <li class="timeline-event right">
+        <div class="timeline-dot"></div>
+        <div class="timeline-event-content">
+          <span class="timeline-date">2014</span>
+          <div class="timeline-title-small">First Gated Community Launched</div>
+          <div class="timeline-desc">Our first gated community project is launched in Saravanampatti, setting new standards for secure and vibrant living.</div>
+        </div>
+      </li>
+      <li class="timeline-event left">
+        <div class="timeline-dot"></div>
+        <div class="timeline-event-content">
+          <span class="timeline-date">2017</span>
+          <div class="timeline-title-small">100+ Happy Families</div>
+          <div class="timeline-desc">We celebrate handing over keys to our 100th family, marking a major milestone in our journey.</div>
+        </div>
+      </li>
+      <li class="timeline-event right">
+        <div class="timeline-dot"></div>
+        <div class="timeline-event-content">
+          <span class="timeline-date">2019</span>
+          <div class="timeline-title-small">Green Residency Apartments</div>
+          <div class="timeline-desc">Launch of Green Residency, our flagship eco-friendly apartment project in Vadavalli.</div>
+        </div>
+      </li>
+      <li class="timeline-event left">
+        <div class="timeline-dot"></div>
+        <div class="timeline-event-content">
+          <span class="timeline-date">2022</span>
+          <div class="timeline-title-small">Award for Excellence</div>
+          <div class="timeline-desc">Received the Coimbatore Real Estate Excellence Award for quality and customer satisfaction.</div>
+        </div>
+      </li>
+      <li class="timeline-event right">
+        <div class="timeline-dot"></div>
+        <div class="timeline-event-content">
+          <span class="timeline-date">2025</span>
+          <div class="timeline-title-small">Expanding Horizons</div>
+          <div class="timeline-desc">KovaiSpace expands to new locations and launches smart home projects for the next generation.</div>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="properties.html">Properties</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <h3>Follow Us</h3>
+        <a href="https://facebook.com/kovaispace" aria-label="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com/kovaispace" aria-label="Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://instagram.com/kovaispace" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://linkedin.com/company/kovaispace" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <div class="footer-details">
+        <img src="images/logo.png" alt="KovaiSpace Logo">
+        <p><strong>KovaiSpace Developers (India) Pvt. Ltd.</strong></p>
+        <p>123 Kovai, Thudiyalur, Tamil Nadu, India</p>
+        <p>+91 911111111</p>
+        <p><a href="mailto:kovaispace@space.com" style="color:#4caf50;">kovaispace@space.com</a></p>
+        <p>© 2025 KovaiSpace Developers. All rights reserved.</p>
+      </div>
+    </div>
+    <div class="footer-quote">
+      <p>"Home is not a place... it's a feeling. Let us help you find yours."</p>
+    </div>
+  </footer>
+  <script>
+    // Animate timeline events on scroll
+    function animateTimeline() {
+      document.querySelectorAll('.timeline-event').forEach(event => {
+        const rect = event.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 60) {
+          event.classList.add('visible');
+        }
+      });
+    }
+    window.addEventListener('scroll', animateTimeline);
+    window.addEventListener('DOMContentLoaded', animateTimeline);
+  </script>
+</body>
+</html>
